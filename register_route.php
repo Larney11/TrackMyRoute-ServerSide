@@ -9,12 +9,16 @@
    {
       $title = $_POST['title'];
       $description = $_POST['description'];
-      $username = $_POST['username'];
+      $address = $_POST['address'];
+      $duration = $_POST['duration'];
       $distance = $_POST['distance'];
+      $avg_speed = $_POST['avg_speed'];
+      $difficulty = $_POST['difficulty'];
       $routeCoordinates = $_POST['routeCoordinates'];
+      $username = $_POST['username'];
 
-      $stmt = $pdo->prepare("INSERT INTO route (username, title, description, time, distance, activity, accessibility, visibility, difficulty) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([$username, $title, $description, "", $distance, "", "", "", ""]);
+      $stmt = $pdo->prepare("INSERT INTO route (username, title, description, address, duration, distance, avg_speed, accessibility, visibility, difficulty) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->execute([$username, $title, $description, $address, $duration, $distance, $avg_speed, "", "", $difficulty]);
       $last_id = $pdo->lastInsertId();
 
       $index = 0;
