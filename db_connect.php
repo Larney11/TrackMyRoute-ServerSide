@@ -29,7 +29,6 @@
 
       */
 
-
   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
     $opt = [
