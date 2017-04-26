@@ -14,9 +14,9 @@
 
     try
     {
-      $stmt = $pdo->prepare("INSERT INTO route_message (route_id, username, message_body, message_datetime) VALUES(?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO route_message (route_id, username, message_body, message_datetime) VALUES(?, ?, ?, ?)");
       $stmt->execute([$route_id, $username, $message_body, $message_datetime]);
-    } catch(PDOException $e)
+    } catch(Exception $e)
     {
       echo $e->getMessage();
     }
@@ -32,11 +32,11 @@
     $route_id = $_GET['route_id'];
     try
     {
-      $stmt = $pdo->prepare("SELECT * FROM route_message WHERE route_id = $route_id");
+      $stmt = $conn->prepare("SELECT * FROM route_message WHERE route_id = $route_id");
       $stmt->execute([]);
       $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($results, JSON_NUMERIC_CHECK);
-    }catch(PDOException $e)
+    }catch(Exception $e)
     {
       echo $e->getMessage();
     }

@@ -1,6 +1,6 @@
 <?php
 
-   $response = array();
+  $response = array();
 
    require_once __DIR__ . '/db_connect.php';
 
@@ -16,7 +16,7 @@
       $height = $_POST['height'];
 
       try {
-      $stmt = $pdo->prepare("INSERT INTO user (username, email, name, dateOfBirth, gender, weight, height) VALUES(?, ?, ?, ?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO user (username, email, name, dateOfBirth, gender, weight, height) VALUES(?, ?, ?, ?, ?, ?, ?)");
       $stmt->execute([$username, $email, $name, $dateOfBirth, $gender, $weight, $height]);
 
       } catch(Exception $e) {
@@ -26,7 +26,7 @@
 
       $response["success"] = 1;
       $response["status"] = 200;
-      $response["message"] = "Route uploaded";
+      $response["message"] = "User Added";
 
       echo json_encode($response);
    }
@@ -34,7 +34,7 @@
 
      $username = $_GET['username'];
 
-     $stmt = $pdo->prepare("SELECT * FROM username WHERE username = $username");
+     $stmt = $conn->prepare("SELECT * FROM username WHERE username = $username");
       $stmt->execute([]);
       $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

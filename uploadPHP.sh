@@ -1,2 +1,4 @@
 #!/bash/bin
-sudo rsync -av --progress ./* /Library/WebServer/Documents/ --exclude ./uploadPHP.sh
+
+sudo cp ./php/* /Library/WebServer/Documents/
+sudo cp ./php/table/* /Library/WebServer/Documents/table/
